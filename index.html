@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Deva's Meat Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#07111f;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#00ffd5;
+border-radius:20px;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+animation:slideDown 1s ease;
+}
+
+@keyframes slideDown{
+from{
+transform:translateY(-100%);
+opacity:0;
+}
+to{
+transform:translateY(0);
+opacity:1;
+}
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#00ffd5;
+letter-spacing:1px;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#00ffd5;
+transition:0.3s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.nav-links a:hover{
+color:#00ffd5;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:60px 8%;
+gap:40px;
+
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.85)),
+url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1600&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+}
+
+.hero-text{
+animation:fadeLeft 1.5s ease;
+}
+
+@keyframes fadeLeft{
+from{
+transform:translateX(-50px);
+opacity:0;
+}
+to{
+transform:translateX(0);
+opacity:1;
+}
+}
+
+.hero-text h1{
+font-size:65px;
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-text span{
+color:#00ffd5;
+}
+
+.hero-text p{
+line-height:1.8;
+max-width:550px;
+margin-bottom:30px;
+color:#d7d7d7;
+}
+
+.hero-btn{
+padding:15px 32px;
+border:none;
+border-radius:40px;
+background:#00ffd5;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 20px rgba(0,255,213,0.3);
+}
+
+.hero-btn:hover{
+transform:translateY(-4px) scale(1.03);
+background:white;
+}
+
+/* HERO CARD */
+
+.hero-card{
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(15px);
+width:320px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-10px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+.hero-card h3{
+color:#00ffd5;
+margin-bottom:15px;
+}
+
+.hero-card p{
+margin:12px 0;
+}
+
+/* SECTION */
+
+.section{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-bottom:50px;
+}
+
+.section-title span{
+color:#00ffd5;
+}
+
+/* PRODUCTS */
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+border-radius:25px;
+overflow:hidden;
+transition:0.4s;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-12px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.06);
+}
+
+.card-content{
+padding:22px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+font-size:24px;
+}
+
+.price{
+color:#00ffd5;
+font-weight:700;
+margin-bottom:15px;
+font-size:18px;
+}
+
+.card-content input{
+width:100%;
+padding:13px;
+border:none;
+border-radius:14px;
+background:#102235;
+color:white;
+margin-bottom:15px;
+outline:none;
+}
+
+.card-content button{
+width:100%;
+padding:13px;
+border:none;
+border-radius:30px;
+background:#00ffd5;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card-content button:hover{
+background:white;
+transform:scale(1.02);
+}
+
+/* CART */
+
+.cart-section{
+margin-top:60px;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+background:#102235;
+padding:14px;
+border-radius:14px;
+margin:12px 0;
+animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.total{
+margin-top:20px;
+font-size:24px;
+font-weight:700;
+color:#00ffd5;
+}
+
+.checkout-btn{
+width:230px;
+padding:14px;
+margin-top:20px;
+border:none;
+border-radius:35px;
+background:#00ffd5;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.checkout-btn:hover{
+background:white;
+}
+
+/* PAYMENT SECTION */
+
+.payment-box{
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:25px;
+text-align:center;
+}
+
+.payment-box h2{
+color:#00ffd5;
+margin-bottom:20px;
+}
+
+.qr-img{
+width:230px;
+border-radius:20px;
+margin:20px 0;
+border:4px solid #00ffd5;
+box-shadow:0 0 25px rgba(0,255,213,0.3);
+animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.03);
+}
+100%{
+transform:scale(1);
+}
+}
+
+.payment-box p{
+margin:10px 0;
+color:#d7d7d7;
+}
+
+/* LOCATION */
+
+.location-box{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:25px;
+text-align:center;
+max-width:700px;
+margin:auto;
+}
+
+.location-box h2{
+color:#00ffd5;
+margin-bottom:15px;
+}
+
+/* OWNER */
+
+.owner-section{
+text-align:center;
+margin-top:60px;
+}
+
+.owner-section img{
+width:190px;
+height:190px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #00ffd5;
+margin-bottom:20px;
+transition:0.4s;
+}
+
+.owner-section img:hover{
+transform:scale(1.05);
+}
+
+.owner-section h2{
+color:#00ffd5;
+margin-bottom:10px;
+}
+
+/* REVIEWS */
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.review-card{
+background:rgba(255,255,255,0.06);
+padding:25px;
+border-radius:22px;
+transition:0.3s;
+}
+
+.review-card:hover{
+transform:translateY(-8px);
+background:rgba(255,255,255,0.08);
+}
+
+.review-card h3{
+margin-bottom:10px;
+color:#00ffd5;
+}
+
+/* FOOTER */
+
+.footer{
+padding:30px;
+text-align:center;
+background:#050b14;
+margin-top:70px;
+color:#9f9f9f;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+width:68px;
+height:68px;
+background:#25d366;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:34px;
+text-decoration:none;
+color:white;
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
+z-index:999;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:100px;
+}
+
+.hero-text h1{
+font-size:45px;
+}
+
+.nav-links{
+display:none;
+}
+
+.checkout-btn{
+width:100%;
+}
+
+.hero-card{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">🥩 Deva's Meat Shop</div>
+
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#payment">Payment</a>
+<a href="#reviews">Reviews</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>Fresh <span>Naatu Kozhi</span> & Vaathu</h1>
+
+<p>
+Premium quality fresh meat delivery with fast WhatsApp ordering, hygienic packing and smooth online payment system.
+</p>
+
+<button class="hero-btn" onclick="scrollToProducts()">
+Shop Now
+</button>
+
+</div>
+
+<div class="hero-card">
+
+<h3>🔥 Fresh Today</h3>
+
+<p>🍗 Chicken – ₹220/kg</p>
+<p>🐔 Naatu Kozhi – ₹550/kg</p>
+<p>🦆 Vaathu – ₹300/kg</p>
+<p>⚡ Fast Delivery</p>
+<p>💳 UPI Payment Available</p>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<h2 class="section-title">
+Our <span>Products</span>
+</h2>
+
+<div class="products">
+
+<!-- CHICKEN -->
+
+<div class="card">
+
+<img src="chicken 2.png">
+
+<div class="card-content">
+
+<h3>Fresh Chicken</h3>
+
+<p class="price">₹220 / kg</p>
+
+<input type="number" id="chickenQty" placeholder="Please enter the quantity only in kilograms">
+
+
+<p style="
+color:#ffcc00;
+font-size:12px;
+margin-top:5px;
+line-height:1.5;
+">
+⚠️ Once entered, the quantity cannot be changed. Please enter it correctly before placing your order.<br>
+🔄 If you reload the page, it will refresh. You can then enter the correct quantity again.
+</p>
+
+<button onclick="addToCart('Chicken',220,'chickenQty')">
+Add To Cart
+</button>
+</div>
+
+</div>
+
+<!-- NAATU KOZHI -->
+
+<div class="card">
+
+<img src="naatu kozhi 2.png">
+
+<div class="card-content">
+
+<h3>Naatu Kozhi</h3>
+
+<p class="price">₹550 / kg</p>
+
+<input type="number" id="naatuQty" placeholder="Please enter the quantity only in kilograms">
+<p style="
+color:#ffcc00;
+font-size:12px;
+margin-top:5px;
+line-height:1.5;
+">
+⚠️ Once entered, the quantity cannot be changed. Please enter it correctly before placing your order.<br>
+🔄 If you reload the page, it will refresh. You can then enter the correct quantity again.
+</p>
+<button onclick="addToCart('Naatu Kozhi',550,'naatuQty')">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+<!-- VAATHU -->
+
+<div class="card">
+
+<img src="vaathu 2.png">
+
+<div class="card-content">
+
+<h3>Vaathu</h3>
+
+<p class="price">₹300 / kg</p>
+
+<input type="number" id="vaathuQty" placeholder="Please enter the quantity only in kilograms" >
+<p style="
+color:#ffcc00;
+font-size:12px;
+margin-top:5px;
+line-height:1.5;
+">
+⚠️ Once entered, the quantity cannot be changed. Please enter it correctly before placing your order.<br>
+🔄 If you reload the page, it will refresh. You can then enter the correct quantity again.
+</p>
+<button onclick="addToCart('Vaathu',300,'vaathuQty')">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CART -->
+
+<div class="cart-section">
+
+<h2>🛒 Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<div class="total">
+Total: ₹<span id="totalAmount">0</span>
+</div>
+
+<button class="checkout-btn" onclick="sendWhatsAppOrder()">
+Place Order
+</button>
+
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<!-- PAYMENT -->
+
+<section class="section" id="payment">
+
+<div class="payment-box">
+
+<h2>💳 Scan & Pay</h2>
+
+<p>Scan using Google Pay, PhonePe or Paytm</p>
+
+<!-- Replace with your actual QR image -->
+<img src="deva scanner.jpeg" class="qr-img" alt="GPay QR Code">
+
+<h3 style="color:#00ffd5; margin-top:15px;">
+👤 Subadevan Munniyappan
+</h3>
+
+<p style="font-size:18px; margin-top:10px;">
+📱 GPay Number: <b>93457 62720</b>
+</p>
+
+<p style="margin-top:10px;">
+💰 After payment, send screenshot via WhatsApp for confirmation.
+</p>
+
+<a href="https://wa.me/919345762720"
+style="
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:#25d366;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+">
+📤 Send Payment Screenshot
+</a>
+
+<p style="margin-top:15px;">
+📞 Support: 93457 62720
+</p>
+
+</div>
+
+</section>
+
+</section>
+
+<!-- LOCATION -->
+
+<section class="section">
+
+<div class="location-box">
+
+<h2>📍 Shop Location</h2>
+
+<p>
+veeraraakiyam Railway station,<br>
+vinayagar kovil near,<br>
+karur, India
+</p>
+
+</div>
+
+</section>
+
+<!-- OWNER -->
+
+<section class="section">
+
+<div class="owner-section">
+
+<img src="deva 2.jpeg">
+
+<h2>👨‍💼 Shop Owner</h2>
+
+<p>
+Deva – Fresh Meat Supplier & Fast Delivery Service
+</p>
+
+</div>
+
+</section>
+
+<!-- REVIEWS -->
+
+<section class="section" id="reviews">
+
+<h2 class="section-title">
+Customer <span>Reviews</span>
+</h2>
+
+<div class="review-grid">
+
+<div class="review-card">
+<h3>⭐ Arun Kumar</h3>
+<p>Fresh chicken quality super 😍</p>
+</div>
+
+<div class="review-card">
+<h3>⭐ Priya</h3>
+<p>Fast delivery and clean packing 💯</p>
+</div>
+
+<div class="review-card">
+<h3>⭐ Vignesh</h3>
+<p>Ordering process very smooth 🔥</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>
+© 2026 Deva's Meat Shop | Premium Fresh Meat Delivery
+</p>
+
+</footer>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/919345762720" class="whatsapp">
+💬
+</a>
+
+<script>
+
+let cart=[];
+let total=0;
+
+function scrollToProducts(){
+
+document.getElementById('products')
+.scrollIntoView({behavior:'smooth'});
+
+}
+
+function addToCart(item,price,inputId){
+
+let qty=document.getElementById(inputId).value;
+
+if(qty==='' || qty<=0){
+
+alert('Enter quantity');
+return;
+
+}
+
+let cost=qty*price;
+
+cart.push({item,qty,cost});
+
+total+=cost;
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let html='';
+
+cart.forEach(c=>{
+
+html+=`
+<div class="cart-item">
+<span>${c.item} (${c.qty}kg)</span>
+<span>₹${c.cost}</span>
+</div>
+`;
+
+});
+
+document.getElementById('cartItems').innerHTML=html;
+
+document.getElementById('totalAmount').innerText=total;
+
+}
+
+function sendWhatsAppOrder(){
+
+if(cart.length===0){
+
+alert('Cart is empty');
+return;
+
+}
+
+let orderText=`🛒 Deva's Meat Shop Order
+
+`;
+
+cart.forEach(c=>{
+
+orderText+=`🥩 ${c.item}
+⚖️ ${c.qty}kg
+💰 ₹${c.cost}
+
+`;
+
+});
+
+orderText+=`🧾 Total: ₹${total}`;
+
+let encodedText=encodeURIComponent(orderText);
+
+window.open(`https://wa.me/919345762720?text=${encodedText}`,'_blank');
+
+}
+
+</script>
+
+</body>
+</html>
